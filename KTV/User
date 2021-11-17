@@ -1,0 +1,92 @@
+class User{
+    private Song root;
+    private Song last;
+    private class Song{
+        private String name;
+        private String singer;
+        private Song next;
+        public Song(String name, String singer) {
+            this.name = name;
+            this.singer = singer;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getSinger() {
+            return singer;
+        }
+
+        public void setSinger(String singer) {
+            this.singer = singer;
+        }
+    }
+
+    public boolean add(String name,String singer) {
+        if(name!=null&&singer!=null) {
+            if (root == null) {
+                root = new Song(name, singer);
+                last = root;
+            } else {
+                last.next = new Song(name, singer);
+                last=last.next;
+            }
+            return true;
+        }else return false;
+    }
+
+    public boolean delete(String name) {
+        if(root.name.equals(name)){
+            root=root.next;
+            return true;
+        }
+        Song song=root.next;
+        Song song1 = root;
+        while (song!=null){
+            if (song.name.equals(name)) {
+                song1.next=song.next;
+                return true;
+            }
+            song1=song1.next;
+            song = song.next;
+        }
+        return false;
+    }
+
+    public boolean change(String name,String newName,String newSinger) {
+        Song song=root;
+        while (song!=null){
+            if (name.equals(song.name)){
+                Song song1=new Song(newName,newSinger);
+                song.name= song1.name;
+                song.singer=song1.singer;
+                return true;
+            }
+            song=song.next;
+        }
+        return false;
+    }
+    public String find(String name) {
+        Song song=root;
+        while (song!=null){
+            if(song.name.equals(name)){
+                return "name:"+song.name+"\r\n"+
+                        "singer:"+song.singer;
+            }
+            song=song.next;
+        }
+        return null;
+    }
+    public void print(){
+        Song song=root;
+        while (song!=null){
+            System.out.println(song.name+":"+song.singer);
+            song=song.next;
+        }
+    }
+}
