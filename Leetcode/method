@@ -1,0 +1,27 @@
+public class Method {
+    public static void main(String[] args) {
+        char ch='a';
+        Character.isDigit(ch);//判断ch是否为数字的字符，以boolean类型返回
+        //数组与字符串的转换===================================
+        String name="jerry";
+        char[] name1=name.toCharArray();//将字符串转换成字符数组
+        //字符串的拼接==============================
+        System.out.println(Integer.MAX_VALUE);//int类型的最大值
+        String name3="Tom";
+        StringBuffer sb=new StringBuffer();//创建StringBuffer对象
+        sb.append(name);//调用StringBuffer的append方法
+        sb.append(name3);//是将name传入,在将name3传入，实现拼接
+        System.out.println(sb.toString());//toString方法来返回值
+        //数组的复制===============
+        int[] arr={1,2,3,4,5,6};
+        int[] arr2=Arrays.copyOfRange(arr,1,4);//将arr下标从i开始，到i1(不包括)的数据复制到arr2中
+        //大小写转换，判断结尾字符串是不是指定的字符串==============
+        String s="abc.Txt";
+        s=s.toLowerCase();//把s转换成小写
+        boolean b=s.endsWith(".txt");//判断字符串是不是以这个结尾
+        //输出进制数============================
+        System.out.println(Integer.toBinaryString(10));//二进制
+        System.out.println(Integer.toOctalString(10));//八进制
+        System.out.println(Integer.toHexString(100));//十六进制
+    }
+}
