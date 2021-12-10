@@ -1,0 +1,26 @@
+//优先级队列
+class Solution{
+    public ListNode mergeKLists(ListNode[] lists) {
+        ListNode res1=new ListNode();
+        ListNode res=res1;
+        PriorityQueue<ListNode> pq=new PriorityQueue<>(new Comparator<ListNode>() {
+            @Override
+            public int compare(ListNode listNode, ListNode t1) {
+                return listNode.val-t1.val;
+            }
+        });
+        for (int i = 0; i < lists.length; i++) {
+            if(lists[i]!=null)
+                pq.add(lists[i]);
+        }
+        while (!pq.isEmpty()) {
+            ListNode Node=pq.poll();
+            res1.next=Node;
+            res1=res1.next;
+            if(Node.next!=null)
+                pq.add(Node.next);
+        }
+        return res.next;
+    }
+
+}
