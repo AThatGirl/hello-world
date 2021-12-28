@@ -1,0 +1,22 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Blacklist {
+    private List<String> blacklist=new ArrayList<>();
+    public void addBlacklist(String name){
+        if (!blacklist.contains(name))
+        blacklist.add(name);
+    }
+    public void delBlacklist(String name){
+        if (blacklist.contains(name))
+        blacklist.remove(name);
+    }
+
+    public List<String> getBlacklist() {
+        return blacklist;
+    }
+
+    public void setBlacklist(List<String> blacklist) {
+        this.blacklist = blacklist;
+    }
+}
