@@ -1,0 +1,20 @@
+public class AllPrize {
+    public String getString(){
+        return null;
+    }
+}
+class FirstPrize extends AllPrize{
+    public  String getString(){
+        return new String("一等奖");
+    }
+}
+class SecondPrize extends AllPrize{
+    public  String getString(){
+        return new String("二等奖");
+    }
+}
+class ThirdPrize extends AllPrize{
+    public  String getString(){
+        return new String("三等奖");
+    }
+}
