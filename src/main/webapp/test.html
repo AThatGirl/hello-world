@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <script>
+        $(function () {
+
+            $("form").submit(function () {
+                $.get("testServlet",$(this).serialize(),function (data) {
+                    if (data.flag){
+                        alert(111);
+                        alert(data.res);
+
+                    }else {
+                        alert(222);
+                        alert(data.res);
+                    }
+                });
+
+                return false;
+
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<form>
+    用户名：
+    <input type="text" name="username">
+    密码：
+    <input type="password" name="password">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

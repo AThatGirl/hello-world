@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>注册界面</title>
+</head>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+  $(function () {
+    $("#registerForm").submit(function () {
+
+      $.post("registerServlet",$(this).serialize(),function (data){
+
+        if (data.situation==0){
+          $("#error_message").html(data.error_message);
+        }
+        if (data.situation==1){
+          alert("注册成功！");
+          location.href="../index.html";
+        }
+        if (data.situation==2){
+          $("#error_message").html(data.error_message);
+        }
+      });
+      return false;
+    });
+
+  });
+
+
+
+</script>
+<style>
+  body {
+    background: url("../img/clouds.jpg") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #3dd5f3;
+  }
+  #page{
+    height:1000px;
+    width:auto;
+    position:relative;
+  }
+  #register{
+    background-color: white;
+    height:318px;
+    width:400px;
+    margin-left:600px;
+    margin-top:250px;
+    position:absolute;
+    text-align:center;
+  }
+  #header{
+    font-family:Tahoma, Geneva, sans-serif;
+    font-size:25px;
+    color:#3083EF;
+  }
+  hr{
+    height: 2px;
+    width:300px;
+    background-color:#75B6F6 ;
+
+  }
+  #xinxi{
+    font-family:Tahoma, Geneva, sans-serif;
+    font-size:15px;
+    color:#A3CCFB;
+    line-height:10px;
+  }
+  #btn{
+    background-color:#0068D0;
+    border:0px;
+    color: seashell;
+    text-align: center;
+    height:30px;
+    width:100px;
+  }
+
+</style>
+
+
+
+<body>
+<form action="" id="registerForm">
+    <div id="page">
+      <div id="register">
+        <p id="header" style="margin-bottom:2px;">注册</p>
+        <hr />
+        <div id="xinxi">
+          <div style="margin-top:15px;">用户名:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="username" placeholder="用户名/手机号"></div>
+          <div style="margin-top:5px;">密&nbsp;&nbsp;&nbsp;码:&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="password" placeholder="密码"></div>
+          <div style="margin-top:5px;">邮&nbsp;&nbsp;&nbsp;箱:&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" name="email" placeholder="邮箱" ></div>
+          <div style="margin-top:10px; margin-left: 0px">出生日期:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" name="birthday" placeholder="生日"></div>
+        </div>
+        <div style="margin-top:25px;">
+          <button type="submit">提交注册</button>
+        </div>
+        <div id="error_message" style="color: red"></div>
+      </div>
+    </div>
+</form>
+</body>
+</html>
